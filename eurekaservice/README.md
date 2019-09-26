@@ -1,0 +1,1 @@
+Eureka Server for micro services in Vehicles API.
