@@ -20,6 +20,8 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.net.URI;
@@ -82,6 +84,25 @@ public class CarControllerTest {
                         .contentType(MediaType.APPLICATION_JSON_UTF8)
                         .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isCreated());
+    }
+
+    /**
+     * Tests for successful updating of a car in the system
+     *
+     * @throws Exception when car updating fails in the system
+     */
+    @Test
+    public void updateCar() throws Exception {
+        Car car = getCar();
+
+        MockHttpServletRequestBuilder builder =
+                MockMvcRequestBuilders.put("/cars/" + car.getId())
+                        .content(json.write(car).getJson())
+                        .contentType(MediaType.APPLICATION_JSON_UTF8)
+                        .accept(MediaType.APPLICATION_JSON_UTF8);
+
+        mvc.perform(builder)
+                .andExpect(status().isOk());
     }
 
     /**

@@ -1,6 +1,5 @@
 HELP.md
-/target/
-!.mvn/wrapper/maven-wrapper.jar
+target/*
 
 ### STS ###
 .apt_generated
@@ -25,8 +24,6 @@ HELP.md
 ### VS Code ###
 .vscode/
 
-.target/*
-
 .mvn/*
 mvnw
 mvnw.cmd
@@ -34,3 +31,5 @@ mvnw.cmd
 *.war
 *jar
 *ear
+
+/lisOfCommits.txt
